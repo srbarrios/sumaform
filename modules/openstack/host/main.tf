@@ -1,5 +1,5 @@
 terraform {
-    required_version = "= 0.11.3"
+    required_version = "= 0.11.7"
 }
 
 data "openstack_images_image_v2" "image" {
