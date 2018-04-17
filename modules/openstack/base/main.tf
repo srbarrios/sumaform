@@ -9,7 +9,7 @@ resource "openstack_images_image_v2" "images" {
   container_format = "bare"
   disk_format = "qcow2"
   properties {
-    hw_rng_model = "'virtio'"
+    hw_rng_model = "virtio"
   }
 }
 
