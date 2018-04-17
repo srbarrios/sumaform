@@ -4,19 +4,19 @@ include:
 
 proxy-packages:
   pkg.latest:
-    {% if 'head' in grains['version'] %}
+    {% if 'head' in grains['product_version'] %}
     - fromrepo: Devel_Galaxy_Manager_Head
     - name: patterns-suma_proxy
-    {% elif '3.0-released' in grains['version'] %}
+    {% elif '3.0-released' in grains['product_version'] %}
     - fromrepo: SUSE-Manager-Proxy-3.0-x86_64-Pool
     - name: patterns-suma_proxy
-    {% elif '3.0-nightly' in grains['version'] %}
+    {% elif '3.0-nightly' in grains['product_version'] %}
     - fromrepo: Devel_Galaxy_Manager_3.0
     - name: patterns-suma_proxy
-    {% elif '3.1-released' in grains['version'] %}
+    {% elif '3.1-released' in grains['product_version'] %}
     - fromrepo: SUSE-Manager-Proxy-3.1-x86_64-Pool
     - name: patterns-suma_proxy
-    {% elif '3.1-nightly' in grains['version'] %}
+    {% elif '3.1-nightly' in grains['product_version'] %}
     - fromrepo: Devel_Galaxy_Manager_3.1
     - name: patterns-suma_proxy
     {% endif %}
@@ -149,7 +149,7 @@ configure-proxy:
 
 create_bootstrap_script:
   cmd.run:
-    - name: rhn-bootstrap --activation-keys=1-DEFAULT --no-up2date --hostname {{ grains['hostname'] }}.{{ grains['domain'] }} {{ '--traditional' if '3.0' not in grains['version'] else '' }}
+    - name: rhn-bootstrap --activation-keys=1-DEFAULT --no-up2date --hostname {{ grains['hostname'] }}.{{ grains['domain'] }} {{ '--traditional' if '3.0' not in grains['product_version'] else '' }}
     - creates: /srv/www/htdocs/pub/bootstrap/bootstrap.sh
     - require:
       - cmd: configure-proxy

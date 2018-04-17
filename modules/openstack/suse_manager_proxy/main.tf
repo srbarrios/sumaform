@@ -22,7 +22,7 @@ module "suse_manager_proxy" {
   gpg_keys = "${var.gpg_keys}"
   grains = <<EOF
 
-version: ${var.version}
+product_version: ${var.product_version}
 mirror: ${var.base_configuration["mirror"]}
 server: ${var.server_configuration["hostname"]}
 role: suse_manager_proxy
@@ -38,7 +38,7 @@ apparmor: ${var.apparmor}
 EOF
 
   // Provider-specific variables
-  image = "${var.image == "default" ? lookup(var.images, var.version) : var.image}"
+  image = "${var.image == "default" ? lookup(var.images, var.product_version) : var.image}"
   flavor = "${var.flavor}"
   root_volume_size = "${var.root_volume_size}"
   floating_ips = "${var.floating_ips}"

@@ -8,7 +8,7 @@ variable "name" {
   type = "string"
 }
 
-variable "version" {
+variable "product_version" {
   description = "A valid SUSE Manager version (eg. 3.0-nightly, head) see README_ADVANCED.md"
   default = "released"
 }

@@ -63,7 +63,7 @@ variable "name_prefix" {
   default = "sumaform"
 }
 
-variable "version" {
+variable "product_version" {
   description = "Main product version (eg. 3.1-released, 3.0-nightly, head)"
   default = "null"
 }

@@ -1,7 +1,7 @@
 include:
   - default
 
-{% if '3.0' in grains['version'] %}
+{% if '3.0' in grains['product_version'] %}
 suse_manager_pool_repo:
   file.managed:
     - name: /etc/zypp/repos.d/SUSE-Manager-3.0-x86_64-Pool.repo
@@ -19,7 +19,7 @@ suse_manager_update_repo:
       - sls: default
 {% endif %}
 
-{% if '3.1' in grains['version'] %}
+{% if '3.1' in grains['product_version'] %}
 suse_manager_pool_repo:
   file.managed:
     - name: /etc/zypp/repos.d/SUSE-Manager-3.1-x86_64-Pool.repo
@@ -37,7 +37,7 @@ suse_manager_update_repo:
       - sls: default
 {% endif %}
 
-{% if 'head' in grains['version'] %}
+{% if 'head' in grains['product_version'] %}
 suse_manager_pool_repo:
   file.managed:
     - name: /etc/zypp/repos.d/SUSE-Manager-Head-x86_64-Pool.repo
@@ -59,7 +59,7 @@ suse_manager_devel_repo:
       - sls: default
 {% endif %}
 
-{% if '3.0-nightly' in grains['version'] %}
+{% if '3.0-nightly' in grains['product_version'] %}
 suse_manager_devel_repo:
   file.managed:
     - name: /etc/zypp/repos.d/Devel_Galaxy_Manager_3.0.repo
@@ -69,7 +69,7 @@ suse_manager_devel_repo:
       - sls: default
 {% endif %}
 
-{% if '3.1-nightly' in grains['version'] %}
+{% if '3.1-nightly' in grains['product_version'] %}
 suse_manager_devel_repo:
   file.managed:
     - name: /etc/zypp/repos.d/Devel_Galaxy_Manager_3.1.repo
@@ -79,7 +79,7 @@ suse_manager_devel_repo:
       - sls: default
 {% endif %}
 
-{% if 'test' in grains['version'] %}
+{% if 'test' in grains['product_version'] %}
 suse_manager_pool_repo:
   file.managed:
     - name: /etc/zypp/repos.d/SUSE-Manager-Head-x86_64-Pool.repo
@@ -145,10 +145,10 @@ refresh_suse_manager_repos:
     - require:
       - file: suse_manager_pool_repo
       - file: suse_manager_update_repo
-      {% if ('nightly' in grains['version'] or 'head' in grains['version'] or 'test' in grains['version']) %}
+      {% if ('nightly' in grains['product_version'] or 'head' in grains['product_version'] or 'test' in grains['product_version']) %}
       - file: suse_manager_devel_repo
       {% endif %}
-      {% if 'test' in grains['version'] %}
+      {% if 'test' in grains['product_version'] %}
       - file: suse_manager_test_repo
       {% endif %}
       {% if grains.get('filebeat') | default(false, true) %}

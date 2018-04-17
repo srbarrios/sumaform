@@ -23,7 +23,7 @@ module "suse_manager" {
   gpg_keys = "${var.gpg_keys}"
   grains = <<EOF
 
-version: ${var.version}
+product_version: ${var.product_version}
 cc_username: ${var.base_configuration["cc_username"]}
 cc_password: ${var.base_configuration["cc_password"]}
 channels: [${join(",", var.channels)}]
@@ -58,7 +58,7 @@ traceback_email: ${var.traceback_email}
 EOF
 
   // Provider-specific variables
-  image = "${var.image == "default" ? lookup(var.images, var.version) : var.image}"
+  image = "${var.image == "default" ? lookup(var.images, var.product_version) : var.image}"
   flavor = "${var.flavor}"
   root_volume_size = "${var.root_volume_size}"
   floating_ips = "${var.floating_ips}"
@@ -68,7 +68,7 @@ output "configuration" {
   value {
     id = "${module.suse_manager.configuration["id"]}"
     hostname = "${module.suse_manager.configuration["hostname"]}"
-    version = "${var.version}"
+    product_version = "${var.product_version}"
     username = "${var.server_username}"
     password = "${var.server_password}"
   }

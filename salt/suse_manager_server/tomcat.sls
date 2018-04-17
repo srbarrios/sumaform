@@ -15,7 +15,7 @@ tomcat_config:
     - require:
       - sls: suse_manager_server.rhn
 
-{% if '3.0' not in grains['version'] %}
+{% if '3.0' not in grains['product_version'] %}
 tomcat_config_loaded:
   file.comment:
     - name: /etc/tomcat/tomcat.conf

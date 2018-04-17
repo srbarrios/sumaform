@@ -16,15 +16,15 @@ include:
 
 suse_manager_packages:
   pkg.latest:
-    {% if 'head' in grains['version'] or 'test' in grains['version'] %}
+    {% if 'head' in grains['product_version'] or 'test' in grains['product_version'] %}
     - fromrepo: Devel_Galaxy_Manager_Head
-    {% elif '3.0-released' in grains['version'] %}
+    {% elif '3.0-released' in grains['product_version'] %}
     - fromrepo: SUSE-Manager-3.0-x86_64-Pool
-    {% elif '3.0-nightly' in grains['version'] %}
+    {% elif '3.0-nightly' in grains['product_version'] %}
     - fromrepo: Devel_Galaxy_Manager_3.0
-    {% elif '3.1-released' in grains['version'] %}
+    {% elif '3.1-released' in grains['product_version'] %}
     - fromrepo: SUSE-Manager-3.1-x86_64-Pool
-    {% elif '3.1-nightly' in grains['version'] %}
+    {% elif '3.1-nightly' in grains['product_version'] %}
     - fromrepo: Devel_Galaxy_Manager_3.1
     {% endif %}
     - name: patterns-suma_server

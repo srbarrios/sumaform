@@ -22,7 +22,7 @@ module "suse_manager_proxy" {
   gpg_keys = "${var.gpg_keys}"
   grains = <<EOF
 
-version: ${var.version}
+product_version: ${var.product_version}
 mirror: ${var.base_configuration["mirror"]}
 server: ${var.server_configuration["hostname"]}
 role: suse_manager_proxy
@@ -38,7 +38,7 @@ apparmor: ${var.apparmor}
 EOF
 
   // Provider-specific variables
-  image = "${var.image == "default" ? lookup(var.images, var.version) : var.image}"
+  image = "${var.image == "default" ? lookup(var.images, var.product_version) : var.image}"
   memory = "${var.memory}"
   vcpu = "${var.vcpu}"
   running = "${var.running}"
@@ -49,7 +49,7 @@ output "configuration" {
   value {
     id = "${module.suse_manager_proxy.configuration["id"]}"
     hostname = "${module.suse_manager_proxy.configuration["hostname"]}"
-    version = "${var.version}"
+    product_version = "${var.product_version}"
     username = "${var.server_configuration["username"]}"
     password = "${var.server_configuration["password"]}"
   }

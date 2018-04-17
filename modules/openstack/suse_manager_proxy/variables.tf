@@ -8,7 +8,7 @@ variable "name" {
   type = "string"
 }
 
-variable "version" {
+variable "product_version" {
   description = "One of: 3.0-nightly, 3.0-released, 3.1-released, 3.1-nightly, head"
   type = "string"
 }
