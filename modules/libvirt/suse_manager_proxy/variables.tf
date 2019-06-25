@@ -108,12 +108,12 @@ variable "image" {
 
 variable "memory" {
   description = "RAM memory in MiB"
-  default     = 1024
+  default = 2048
 }
 
 variable "vcpu" {
   description = "Number of virtual CPUs"
-  default     = 1
+  default = 2
 }
 
 variable "running" {

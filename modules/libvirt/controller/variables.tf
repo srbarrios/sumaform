@@ -301,12 +301,12 @@ variable "server_http_proxy" {
 
 variable "memory" {
   description = "RAM memory in MiB"
-  default     = 2048
+  default = 4096
 }
 
 variable "vcpu" {
   description = "Number of virtual CPUs"
-  default     = 1
+  default = 2
 }
 
 variable "running" {
